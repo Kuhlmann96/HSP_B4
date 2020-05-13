@@ -73,7 +73,10 @@ namespace GUI_HSP_B4
                     Kreis k = new Kreis(dichte);
                     break;
                 case "Rund":
-                    Rund ru = new Rund(dichte);
+                    double durchmesser = Double.Parse(param1Wert.Text);
+                    double länge2 = Double.Parse(längeWert.Text);
+                    rund ru = new rund(dichte, durchmesser, länge2);
+                    infos = ru.getInformation();
                     break;
                 case "T":
                     T t = new T(dichte);

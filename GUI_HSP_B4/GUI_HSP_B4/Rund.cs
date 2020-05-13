@@ -6,40 +6,31 @@ using System.Threading.Tasks;
 
 namespace GUI_HSP_B4
 {
-    public class Rund
+    public class rund
     {
-        double höhe, breite, länge, wandstärke, dichte;
+        double durchmesser, länge, dichte;
         double fläche, volumen;
         double gewicht;
         double[] flächenträgheitsmoment;
-        public Rund(double dichte)
+        public rund(double dichte, double durchmesser, double länge2)
         {
+            this.durchmesser = durchmesser;
             this.dichte = dichte;
-            // Eingabe
-            Console.WriteLine("Breite in mm eingeben");
-            breite = Double.Parse(Console.ReadLine());
-            Console.WriteLine("Höhe in mm eingeben");
-            höhe = Double.Parse(Console.ReadLine());
-            Console.WriteLine("Länge in mm eingeben");
-            länge = Double.Parse(Console.ReadLine());
-            Console.WriteLine("Wandstärke in mm eingeben");
-            wandstärke = Double.Parse(Console.ReadLine());
-            // Berechnung
+            this.länge = länge2;
             fläche = calculateFläche();
             volumen = calculateVolumen();
             gewicht = calculateGewicht();
             flächenträgheitsmoment = calculateFlächenträgheitsmoment();
-            // Ausgabe
-            showInformation();
+
         }
 
         public double calculateFläche()
         {
-            return höhe * breite;
+            return Math.PI * durchmesser;
         }
         public double calculateVolumen()
         {
-            return (fläche - (höhe - wandstärke * 2) * (breite - wandstärke * 2)) * länge;
+            return Math.PI * durchmesser * länge;
         }
         public double calculateGewicht()
         {
@@ -48,27 +39,25 @@ namespace GUI_HSP_B4
         public double[] calculateFlächenträgheitsmoment()
         {
             double[] momente = new double[5];
-            momente[0] = Math.Pow(höhe, 3) * breite / 12;
-            momente[1] = Math.Pow(breite, 3) * höhe / 12;
+            momente[0] = Math.PI * Math.Pow(durchmesser / 2, 4) / 4;
+            momente[1] = Math.PI * Math.Pow(durchmesser / 2, 4) / 4;
             momente[2] = 0;
-            momente[3] = breite * höhe / 12 * (Math.Pow(höhe, 2) + Math.Pow(breite, 2));
-            momente[4] = (breite * Math.Pow(höhe, 3)) / 3;
+            momente[3] = Math.PI * Math.Pow(durchmesser / 2, 4) / 2;
+            momente[4] = ((Math.PI * 5) / 4) * Math.Pow(durchmesser / 2 ,4);
             return momente;
         }
 
-        public void showInformation()
+        public List<double> getInformation()
         {
-            Console.WriteLine("Querschnittsfläche in mm² = " + String.Format("{0:0.00}", fläche));
-            Console.WriteLine("Volumen in cm³ = " + String.Format("{0:0.00}", volumen / 1000));
-            Console.WriteLine("Gewicht  in kg = " + String.Format("{0:0.00}", gewicht / 100000));
-            double[] momente = calculateFlächenträgheitsmoment();
-            Console.WriteLine("Flächenträgheitsmomente: ");
-            Console.WriteLine("Iy: " + String.Format("{0:0.00}", momente[0]));
-            Console.WriteLine("Iz: " + String.Format("{0:0.00}", momente[1]));
-            Console.WriteLine("Iyz: " + String.Format("{0:0.00}", momente[2]));
-            Console.WriteLine("Ip: " + String.Format("{0:0.00}", momente[3]));
-            Console.WriteLine("Iyy: " + String.Format("{0:0.00}", momente[4]));
-
+            List<double> infos = new List<double>();
+            infos.Add(fläche);
+            infos.Add(volumen / 1000);
+            infos.Add(gewicht / 100000);
+            foreach (double m in flächenträgheitsmoment)
+            {
+                infos.Add(m);
+            }
+            return infos;
         }
     }
 }
