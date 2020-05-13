@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI_HSP_B4", "GUI_HSP_B4\GUI_HSP_B4.csproj", "{BE27E91B-D0A5-4623-9968-148C77C758CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE27E91B-D0A5-4623-9968-148C77C758CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE27E91B-D0A5-4623-9968-148C77C758CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE27E91B-D0A5-4623-9968-148C77C758CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE27E91B-D0A5-4623-9968-148C77C758CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {454E75DF-5A50-48EB-A1CD-1967F8B5D8D5}
+	EndGlobalSection
+EndGlobal
